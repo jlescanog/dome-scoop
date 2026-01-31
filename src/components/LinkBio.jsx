@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function LinkBio() {
+export function LinkBio({ alHacerClickEnTienda }) {
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center py-10 px-4">
       <div className="layout-container flex h-full grow flex-col w-full max-w-[580px]">
@@ -49,8 +49,8 @@ export function LinkBio() {
 
         {/* --- BOTONES DE ENLACE --- */}
         <div className="flex flex-col gap-4 px-4 mb-12">
-          <BotonEnlace icono="favorite" texto="Nuevos Scoops" estilo="primary" />
-          <BotonEnlace icono="star" texto="Los Más Vendidos" estilo="secondary" />
+          <BotonEnlace icono="favorite" texto="Nuevos Scoops" estilo="primary" onClick={alHacerClickEnTienda}/>
+          <BotonEnlace icono="star" texto="Los Más Vendidos" estilo="secondary" onClick={alHacerClickEnTienda}/>
           <BotonEnlace icono="toys" texto="Peluches & Juguetes" estilo="lavender" />
           <BotonEnlace icono="edit" texto="Papelería Cute" estilo="mint" />
           <BotonEnlace icono="store" texto="Ubicación Tienda" estilo="white" />
@@ -84,7 +84,7 @@ export function LinkBio() {
 
 // --- COMPONENTES INTERNOS (Para no repetir código) ---
 
-function BotonEnlace({ icono, texto, estilo }) {
+function BotonEnlace({ icono, texto, estilo, onClick }) {
   // Definimos colores según el "estilo" que le pasemos
   const clasesColores = {
     primary: "bg-primary text-white shadow-primary/20 hover:shadow-primary/40",
@@ -95,7 +95,7 @@ function BotonEnlace({ icono, texto, estilo }) {
   };
 
   return (
-    <button className={`group flex items-center justify-between min-w-0 cursor-pointer overflow-hidden rounded-full h-16 px-8 text-lg font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${clasesColores[estilo]}`}>
+    <button onClick={onClick} className={`group flex items-center justify-between min-w-0 cursor-pointer overflow-hidden rounded-full h-16 px-8 text-lg font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 ${clasesColores[estilo]}`}>
       <div className="flex items-center gap-3">
         <span className="material-symbols-outlined">{icono}</span>
         <span className="truncate">{texto}</span>

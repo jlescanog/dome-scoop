@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "nombre": "Scoop Misterioso",
+    "precio": 35.00,
+    "categoria": "misterio",
+    "imagen": "https://img.freepik.com/premium-photo/cute-pastel-mystery-box-with-ribbon-bow-3d-rendering_160613-58.jpg",
+    "descripcion": "¡Sorpresa total! Puede incluir papelería, accesorios o peluches pequeños."
+  },
+  {
+    "id": 2,
+    "nombre": "Scoop Papelería",
+    "precio": 45.00,
+    "categoria": "papeleria",
+    "imagen": "https://img.freepik.com/premium-photo/cute-stationery-set-pastel-colors-3d-render_160613-245.jpg",
+    "descripcion": "Lleno de lapiceros, stickers, washi tapes y notitas kawaii."
+  },
+  {
+    "id": 3,
+    "nombre": "Scoop Maquillaje",
+    "precio": 60.00,
+    "categoria": "belleza",
+    "imagen": "https://img.freepik.com/premium-photo/set-makeup-products-pastel-colors-3d-render_160613-102.jpg",
+    "descripcion": "Lip gloss, sombras y accesorios de belleza sorpresa."
+  },
+  {
+    "id": 4,
+    "nombre": "Mega Scoop (Edición Limitada)",
+    "precio": 100.00,
+    "categoria": "premium",
+    "imagen": "https://img.freepik.com/premium-photo/large-gift-box-with-many-items-inside-3d-render_160613-88.jpg",
+    "descripcion": "El doble de productos + un peluche mediano garantizado."
+  }
+]
