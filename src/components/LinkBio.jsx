@@ -11,7 +11,7 @@ export function LinkBio({ alHacerClickEnTienda }) {
             <div className="text-primary">
               <span className="material-symbols-outlined text-3xl">auto_awesome</span>
             </div>
-            <h2 className="text-lg font-extrabold bubbly-text text-gray-800 dark:text-white">Kawaii Dome</h2>
+            <h2 className="text-lg font-extrabold bubbly-text text-gray-800 dark:text-white">Dome Scoop</h2>
           </div>
           <div className="flex gap-2">
             <button className="flex items-center justify-center rounded-full h-10 w-10 bg-sakura dark:bg-primary/20 text-primary hover:scale-105 transition-transform">
@@ -39,7 +39,7 @@ export function LinkBio({ alHacerClickEnTienda }) {
           </div>
           <div className="flex flex-col items-center text-center px-4">
             <h1 className="text-4xl font-extrabold bubbly-text mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#ff9ccb]">
-              Kawaii Dome
+              Dome Scoop
             </h1>
             <p className="text-[#896175] dark:text-[#ccabbc] text-lg font-medium max-w-[320px]">
               ¡Esparciendo alegría, un scoop a la vez! ✨
