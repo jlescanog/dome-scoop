@@ -10,7 +10,7 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
   };
 
   const abrirWhatsAppDirecto = () => {
-    const numero = "51934865003";
+    const numero = "51987529649";
     const mensaje = "Hola Dome Scoop! 👋 Vengo de su web y quiero más info.";
     abrirEnlace(`https://wa.me/${numero}?text=${mensaje}`);
   };

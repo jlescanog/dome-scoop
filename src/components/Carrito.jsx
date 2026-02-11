@@ -6,7 +6,7 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
 
   // 2. Función Mágica: Generar Link de WhatsApp
   const enviarPedido = () => {
-    const numeroTelefono = "51934865003"; // ¡CAMBIA
+    const numeroTelefono = "51987529649"; // ¡CAMBIA
     
     let mensaje = `Hola Kawaii Dome! ✨ Me gustaría pedir:%0A%0A`;
     
