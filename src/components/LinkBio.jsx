@@ -1,4 +1,6 @@
 import React from 'react';
+// 1. IMPORTAMOS EL LOGO (Asegúrate que el archivo esté en esa carpeta)
+import logoDome from '../assets/logo_principal.svg';
 
 export function LinkBio({ alHacerClickEnTienda }) {
   return (
@@ -8,11 +10,19 @@ export function LinkBio({ alHacerClickEnTienda }) {
         {/* --- CABECERA (Header) --- */}
         <header className="flex items-center justify-between w-full px-6 py-4 mb-8 glass-card rounded-full shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="text-primary">
-              <span className="material-symbols-outlined text-3xl">auto_awesome</span>
+            {/* 2. LOGO EN LA CABECERA (Reemplaza al texto y la estrella) */}
+            <div className="h-10 flex items-center">
+               <img 
+                 src={logoDome} 
+                 alt="Dome Scoop Logo" 
+                 className="h-full w-auto object-contain drop-shadow-sm" 
+               />
+               {/* Opcional: Si el logo ya tiene letras, no hace falta el h2, 
+                   pero si quieres dejar el texto al lado, descomenta la linea de abajo */}
+               {/* <h2 className="ml-2 text-lg font-extrabold bubbly-text text-gray-800 dark:text-white">Dome Scoop</h2> */}
             </div>
-            <h2 className="text-lg font-extrabold bubbly-text text-gray-800 dark:text-white">Dome Scoop</h2>
           </div>
+          
           <div className="flex gap-2">
             <button className="flex items-center justify-center rounded-full h-10 w-10 bg-sakura dark:bg-primary/20 text-primary hover:scale-105 transition-transform">
               <span className="material-symbols-outlined text-[20px]">favorite</span>
@@ -23,20 +33,24 @@ export function LinkBio({ alHacerClickEnTienda }) {
           </div>
         </header>
 
-        {/* --- PERFIL --- */}
+        {/* --- PERFIL PRINCIPAL --- */}
         <div className="flex flex-col items-center gap-6 mb-10">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-tr from-primary to-[#ff9ccb] rounded-full blur opacity-40 group-hover:opacity-60 transition duration-500"></div>
-            {/* NOTA: Aquí puedes cambiar la URL por una foto de tu hija o el logo real */}
+            
+            {/* 3. LOGO CENTRAL (Grande) */}
             <img 
-              src="https://api.dicebear.com/7.x/avataaars/svg?seed=Domenica&backgroundColor=ffdfbf" 
-              alt="Avatar Kawaii"
-              className="relative bg-white dark:bg-[#2d1521] rounded-full border-4 border-white dark:border-[#2d1521] shadow-xl h-40 w-40 object-cover"
+              src={logoDome} 
+              alt="Logo Dome Scoop"
+              // Agregué 'object-contain' y 'p-3' para que el logo respire dentro del círculo y no se corte
+              className="relative bg-white dark:bg-[#2d1521] rounded-full border-4 border-white dark:border-[#2d1521] shadow-xl h-40 w-40 object-contain p-3"
             />
+            
             <div className="absolute -bottom-2 -right-2 bg-white dark:bg-background-dark p-2 rounded-full shadow-lg border border-primary/20">
               <span className="material-symbols-outlined text-primary text-2xl">verified</span>
             </div>
           </div>
+          
           <div className="flex flex-col items-center text-center px-4">
             <h1 className="text-4xl font-extrabold bubbly-text mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#ff9ccb]">
               Dome Scoop
@@ -73,7 +87,7 @@ export function LinkBio({ alHacerClickEnTienda }) {
         <footer className="flex flex-col gap-6 py-10 text-center">
           <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#f0429933] to-transparent"></div>
           <p className="text-[#896175] dark:text-[#ccabbc] text-sm font-medium">
-            © 2026 Kawaii Dome. Hecho con 💖 en Tacna.
+            © 2026 Dome Scoop. Hecho con 💖 en Tacna.
           </p>
         </footer>
 
@@ -82,10 +96,9 @@ export function LinkBio({ alHacerClickEnTienda }) {
   );
 }
 
-// --- COMPONENTES INTERNOS (Para no repetir código) ---
+// --- COMPONENTES INTERNOS ---
 
 function BotonEnlace({ icono, texto, estilo, onClick }) {
-  // Definimos colores según el "estilo" que le pasemos
   const clasesColores = {
     primary: "bg-primary text-white shadow-primary/20 hover:shadow-primary/40",
     secondary: "bg-sakura dark:bg-primary/10 text-primary dark:text-[#ff9ccb] border-2 border-primary/10 hover:border-primary/30",
