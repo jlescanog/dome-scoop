@@ -6,7 +6,7 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
   const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
 
   const enviarPedido = () => {
-    const numeroTelefono = "519987529649"; // TU NÚMERO
+    const numeroTelefono = "51987529649";
     
     let mensaje = `Hola Dome Scoop! ✨ Me gustaría pedir:%0A%0A`;
     carrito.forEach(item => {
