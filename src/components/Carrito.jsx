@@ -1,19 +1,17 @@
 import React from 'react';
+// 1. IMPORTAMOS EL LOGO (Para usarlo si falla la imagen del producto)
+import logoPlaceholder from '../assets/logo_principal.svg';
 
 export function Carrito({ carrito, alVolver, alEliminar }) {
-  // 1. Calcular el total automáticamente
   const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
 
-  // 2. Función Mágica: Generar Link de WhatsApp
   const enviarPedido = () => {
-    const numeroTelefono = "51987529649"; // ¡CAMBIA
+    const numeroTelefono = "519987529649"; // TU NÚMERO
     
-    let mensaje = `Hola Kawaii Dome! ✨ Me gustaría pedir:%0A%0A`;
-    
+    let mensaje = `Hola Dome Scoop! ✨ Me gustaría pedir:%0A%0A`;
     carrito.forEach(item => {
       mensaje += `▪️ ${item.cantidad}x ${item.nombre} (S/. ${item.precio * item.cantidad})%0A`;
     });
-
     mensaje += `%0A💰 *TOTAL: S/. ${total.toFixed(2)}*`;
     mensaje += `%0A📍 Mis datos de envío:`;
 
@@ -42,7 +40,19 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
         ) : (
           carrito.map((item) => (
             <div key={item.id} className="glass-card p-4 rounded-xl flex items-center gap-4 animate-fade-in">
-              <img src={item.imagen} alt={item.nombre} className="w-16 h-16 rounded-lg object-cover" />
+              
+              {/* 2. IMAGEN CON PROTECCIÓN (Si falla, muestra el logo) */}
+              <img 
+                src={item.imagen} 
+                alt={item.nombre} 
+                className="w-16 h-16 rounded-lg object-cover bg-white"
+                onError={(e) => {
+                  e.target.onerror = null; 
+                  e.target.src = logoPlaceholder; // <--- AQUÍ ESTÁ EL ARREGLO
+                  e.target.className = "w-16 h-16 rounded-lg object-contain p-1 bg-white"; // Ajuste visual para que el logo se vea bien
+                }}
+              />
+              
               <div className="flex-1">
                 <h3 className="font-bold text-sm">{item.nombre}</h3>
                 <p className="text-xs text-primary font-bold">S/. {item.precio} c/u</p>
@@ -59,7 +69,7 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
         )}
       </div>
 
-      {/* Footer Fijo con Total y Botón */}
+      {/* Footer Fijo */}
       {carrito.length > 0 && (
         <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#2d1521] border-t border-primary/10 p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] z-20">
           <div className="max-w-[600px] mx-auto flex flex-col gap-4">

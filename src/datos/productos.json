@@ -1,34 +1,66 @@
 [
   {
-    "id": 1,
-    "nombre": "Scoop Misterioso",
-    "precio": 35.00,
-    "categoria": "misterio",
-    "imagen": "https://img.freepik.com/premium-photo/cute-pastel-mystery-box-with-ribbon-bow-3d-rendering_160613-58.jpg",
-    "descripcion": "¡Sorpresa total! Puede incluir papelería, accesorios o peluches pequeños."
+    "id": 101,
+    "nombre": "Scoop Pequeño",
+    "precio": 30.00,
+    "categoria": "scoops",
+    "imagen": "/img/scoop-peque.jpg", 
+    "descripcion": "Incluye de 7 a 10 dijes + Regalo sorpresa ✨"
   },
   {
-    "id": 2,
-    "nombre": "Scoop Papelería",
-    "precio": 45.00,
-    "categoria": "papeleria",
-    "imagen": "https://img.freepik.com/premium-photo/cute-stationery-set-pastel-colors-3d-render_160613-245.jpg",
-    "descripcion": "Lleno de lapiceros, stickers, washi tapes y notitas kawaii."
+    "id": 102,
+    "nombre": "Scoop Grande",
+    "precio": 55.00,
+    "categoria": "scoops",
+    "imagen": "/img/scoop-grande.jpg",
+    "descripcion": "Incluye de 12 a 15 dijes + Regalo especial 🎁"
   },
   {
-    "id": 3,
-    "nombre": "Scoop Maquillaje",
-    "precio": 60.00,
-    "categoria": "belleza",
-    "imagen": "https://img.freepik.com/premium-photo/set-makeup-products-pastel-colors-3d-render_160613-102.jpg",
-    "descripcion": "Lip gloss, sombras y accesorios de belleza sorpresa."
+    "id": 103,
+    "nombre": "Scoop Premium",
+    "precio": 80.00,
+    "categoria": "scoops",
+    "imagen": "/img/scoop-premium.jpg",
+    "descripcion": "Incluye de 16 a 23 dijes + Regalo + Caja Reutilizable 💖"
   },
   {
-    "id": 4,
-    "nombre": "Mega Scoop (Edición Limitada)",
-    "precio": 100.00,
-    "categoria": "premium",
-    "imagen": "https://img.freepik.com/premium-photo/large-gift-box-with-many-items-inside-3d-render_160613-88.jpg",
-    "descripcion": "El doble de productos + un peluche mediano garantizado."
+    "id": 201,
+    "nombre": "Cápsula Mini",
+    "precio": 10.00,
+    "categoria": "capsulas",
+    "imagen": "/img/capsula-mini.jpg",
+    "descripcion": "Un detalle pequeño pero lleno de encanto."
+  },
+  {
+    "id": 202,
+    "nombre": "Cápsula Cute",
+    "precio": 15.00,
+    "categoria": "capsulas",
+    "imagen": "/img/capsula-cute.jpg",
+    "descripcion": "Dosis extra de ternura en una cápsula."
+  },
+  {
+    "id": 203,
+    "nombre": "Cápsula Deluxe",
+    "precio": 20.00,
+    "categoria": "capsulas",
+    "imagen": "/img/capsula-deluxe.jpg",
+    "descripcion": "Sorpresas seleccionadas de mayor valor."
+  },
+  {
+    "id": 204,
+    "nombre": "Cápsula Premium",
+    "precio": 25.00,
+    "categoria": "capsulas",
+    "imagen": "/img/capsula-premium.jpg",
+    "descripcion": "Calidad superior en formato sorpresa."
+  },
+  {
+    "id": 205,
+    "nombre": "Cápsula Super Premium",
+    "precio": 30.00,
+    "categoria": "capsulas",
+    "imagen": "/img/capsula-super.jpg",
+    "descripcion": "La experiencia máxima en cápsulas."
   }
 ]

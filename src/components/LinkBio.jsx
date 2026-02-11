@@ -111,13 +111,28 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
         </div>
 
         {/* (Sección de iconos pequeños ELIMINADA como pediste) */}
-
         {/* --- FOOTER --- */}
-        <footer className="flex flex-col gap-6 py-10 text-center">
+        <footer className="flex flex-col gap-4 py-10 text-center items-center">
+          
+          {/* Línea divisoria */}
           <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#f0429933] to-transparent"></div>
+          
+          {/* Copyright de la marca */}
           <p className="text-[#896175] dark:text-[#ccabbc] text-sm font-medium">
             © 2026 Dome Scoop. Hecho con 💖 en Tacna.
           </p>
+
+          {/* TU FIRMA DE DESARROLLADOR (Versión WhatsApp) */}
+          <a 
+            href="https://wa.me/51933243356?text=Hola%20Jhair,%20vi%20la%20web%20de%20DomeScoop%20y%20me%20gustaría%20cotizar%20una%20igual" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-xs text-gray-400 hover:text-primary transition-colors duration-300 flex items-center gap-1 opacity-70 hover:opacity-100"
+          >
+            <span className="material-symbols-outlined text-[14px]">code</span>
+            Desarrollado por Jhair Lescano
+          </a>
+
         </footer>
 
       </div>
