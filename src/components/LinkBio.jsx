@@ -97,7 +97,7 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
             icono="music_note" 
             texto="TikTok" 
             estilo="tiktok" 
-            onClick={() => abrirEnlace("https://tiktok.com/@TU_USUARIO")}
+            onClick={() => abrirEnlace("https://tiktok.com/@Chifa_Gamer")}
           />
 
           {/* 6. QUIÉNES SOMOS (Nueva página interna) */}
