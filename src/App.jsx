@@ -51,15 +51,12 @@ function App() {
         value: producto.precio
       });
       
-      // Mostrar toast de confirmación
+      // Mostrar toast de confirmación (el cierre a los 3 s lo maneja el componente Toast)
       setToast({
-        mensaje: `¡${producto.nombre} agregado al carrito! 🛍️`,
+        mensaje: `${producto.nombre} agregado al carrito`,
         tipo: 'exito'
       });
-      
-      // Ocultar toast después de 3 segundos
-      setTimeout(() => setToast(null), 3000);
-      
+
       return nuevoCarrito;
     });
     

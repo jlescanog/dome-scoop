@@ -42,4 +42,19 @@
       transform: translateY(0);
     }
   }
+
+  .animate-fade-in-toast {
+    animation: fadeInToast 0.3s ease-out;
+  }
+
+  @keyframes fadeInToast {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 10px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
 }

@@ -17,20 +17,20 @@ export default function Toast({ mensaje, tipo = 'exito', onClose }) {
 
   return (
     <div 
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 rounded-full shadow-lg ${estilos[tipo]} animate-fade-in flex items-center gap-2`}
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-lg shadow-lg ${estilos[tipo]} animate-fade-in-toast flex items-center gap-2`}
       role="alert"
       aria-live="polite"
     >
-      <span className="material-symbols-outlined">
+      <span className="material-symbols-outlined text-lg">
         {tipo === 'exito' ? 'check_circle' : tipo === 'error' ? 'error' : 'info'}
       </span>
-      <span className="font-medium">{mensaje}</span>
+      <span className="text-sm font-medium">{mensaje}</span>
       <button
         onClick={onClose}
-        className="ml-2 hover:opacity-80 transition-opacity"
+        className="ml-1 hover:opacity-80 transition-opacity"
         aria-label="Cerrar notificación"
       >
-        <span className="material-symbols-outlined text-sm">close</span>
+        <span className="material-symbols-outlined text-base">close</span>
       </button>
     </div>
   );
