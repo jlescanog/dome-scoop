@@ -1,19 +1,17 @@
-import React from 'react';
-// CORRECCIÓN: Usamos el nombre exacto que tienes en tu carpeta
+import React, { useCallback } from 'react';
 import logoDome from '../assets/logo_principal.svg';
+import { TELEFONO_WHATSAPP, MENSAJES, URLS } from '../utils/constants';
 
-export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
+export const LinkBio = React.memo(function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
   
   // Función para abrir enlaces externos (WhatsApp, Redes)
-  const abrirEnlace = (url) => {
-    window.open(url, '_blank');
-  };
+  const abrirEnlace = useCallback((url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }, []);
 
-  const abrirWhatsAppDirecto = () => {
-    const numero = "51987529649";
-    const mensaje = "Hola Dome Scoop! 👋 Vengo de su web y quiero más info.";
-    abrirEnlace(`https://wa.me/${numero}?text=${mensaje}`);
-  };
+  const abrirWhatsAppDirecto = useCallback(() => {
+    abrirEnlace(`https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(MENSAJES.WHATSAPP_INICIAL)}`);
+  }, [abrirEnlace]);
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center py-10 px-4">
@@ -27,8 +25,12 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
             </div>
           </div>
           <div className="flex gap-2">
-            <button onClick={alHacerClickEnTienda} className="flex items-center justify-center rounded-full h-10 w-10 bg-sakura dark:bg-primary/20 text-primary hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
+            <button 
+              onClick={alHacerClickEnTienda} 
+              className="flex items-center justify-center rounded-full h-10 w-10 bg-sakura dark:bg-primary/20 text-primary hover:scale-105 transition-transform focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="Ver catálogo de productos"
+            >
+              <span className="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_bag</span>
             </button>
           </div>
         </header>
@@ -41,6 +43,8 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
               src={logoDome} 
               alt="Logo Dome Scoop"
               className="relative bg-white dark:bg-[#2d1521] rounded-full border-4 border-white dark:border-[#2d1521] shadow-xl h-40 w-40 object-contain p-4"
+              width="160"
+              height="160"
             />
             <div className="absolute -bottom-2 -right-2 bg-white dark:bg-background-dark p-2 rounded-full shadow-lg border border-primary/20">
               <span className="material-symbols-outlined text-primary text-2xl">verified</span>
@@ -64,7 +68,7 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
           <BotonEnlace 
             icono="inventory_2" 
             texto="Productos" 
-            estilo="primary" 
+            estilo="gradient1" 
             onClick={alHacerClickEnTienda}
           />
 
@@ -72,7 +76,7 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
           <BotonEnlace 
             icono="chat" 
             texto="WhatsApp" 
-            estilo="whatsapp" 
+            estilo="gradient2" 
             onClick={abrirWhatsAppDirecto}
           />
 
@@ -80,31 +84,31 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
           <BotonEnlace 
             icono="thumb_up" 
             texto="Facebook" 
-            estilo="facebook" 
-            onClick={() => abrirEnlace("https://facebook.com/domescoop")}
+            estilo="gradient3" 
+            onClick={() => abrirEnlace(URLS.FACEBOOK)}
           />
 
           {/* 4. INSTAGRAM */}
           <BotonEnlace 
             icono="photo_camera" 
             texto="Instagram" 
-            estilo="instagram" 
-            onClick={() => abrirEnlace("https://instagram.com/dome_scoop")}
+            estilo="gradient4" 
+            onClick={() => abrirEnlace(URLS.INSTAGRAM)}
           />
 
           {/* 5. TIKTOK */}
           <BotonEnlace 
             icono="music_note" 
             texto="TikTok" 
-            estilo="tiktok" 
-            onClick={() => abrirEnlace("https://tiktok.com/@Chifa_Gamer")}
+            estilo="gradient5" 
+            onClick={() => abrirEnlace(URLS.TIKTOK)}
           />
 
           {/* 6. QUIÉNES SOMOS (Nueva página interna) */}
           <BotonEnlace 
             icono="info" 
             texto="Quiénes Somos & Envíos" 
-            estilo="white" 
+            estilo="gradient6" 
             onClick={alHacerClickEnInfo}
           />
 
@@ -124,12 +128,13 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
 
           {/* TU FIRMA DE DESARROLLADOR (Versión WhatsApp) */}
           <a 
-            href="https://wa.me/51933243356?text=Hola%20Jhair,%20vi%20la%20web%20de%20DomeScoop%20y%20me%20gustaría%20cotizar%20una%20igual" 
+            href={URLS.WHATSAPP_DESARROLLADOR} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-xs text-gray-400 hover:text-primary transition-colors duration-300 flex items-center gap-1 opacity-70 hover:opacity-100"
+            className="text-xs text-gray-400 hover:text-primary transition-colors duration-300 flex items-center gap-1 opacity-70 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            aria-label="Contactar al desarrollador Jhair Lescano por WhatsApp"
           >
-            <span className="material-symbols-outlined text-[14px]">code</span>
+            <span className="material-symbols-outlined text-[14px]" aria-hidden="true">code</span>
             Desarrollado por Jhair Lescano
           </a>
 
@@ -138,12 +143,18 @@ export function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
       </div>
     </div>
   );
-}
+});
 
 // Componente de Botón Reutilizable con nuevos estilos
-function BotonEnlace({ icono, texto, estilo, onClick }) {
+const BotonEnlace = React.memo(function BotonEnlace({ icono, texto, estilo, onClick }) {
   const clasesColores = {
     primary:   "bg-primary text-white shadow-lg shadow-primary/30 hover:shadow-primary/50",
+    gradient1: "bg-[#f04299] text-white shadow-lg shadow-primary/20 hover:brightness-110",
+    gradient2: "bg-[#f255a3] text-white shadow-lg shadow-primary/20 hover:brightness-110",
+    gradient3: "bg-[#f56ab5] text-white shadow-lg shadow-primary/20 hover:brightness-110",
+    gradient4: "bg-[#f87fc4] text-white shadow-lg shadow-primary/20 hover:brightness-110",
+    gradient5: "bg-[#fb94d1] text-white shadow-lg shadow-primary/20 hover:brightness-110",
+    gradient6: "bg-[#ffb3e0] text-gray-800 dark:text-gray-900 shadow-lg shadow-primary/20 hover:brightness-110",
     whatsapp:  "bg-[#25D366] text-white shadow-lg shadow-green-400/20 hover:shadow-green-400/40",
     facebook:  "bg-[#1877F2] text-white shadow-lg shadow-blue-400/20 hover:shadow-blue-400/40",
     instagram: "bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] text-white shadow-lg hover:brightness-110",
@@ -152,14 +163,18 @@ function BotonEnlace({ icono, texto, estilo, onClick }) {
   };
 
   return (
-    <button onClick={onClick} className={`group flex items-center justify-between min-w-0 cursor-pointer overflow-hidden rounded-full h-16 px-8 text-lg font-bold transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] ${clasesColores[estilo]}`}>
+    <button 
+      onClick={onClick} 
+      className={`group flex items-center justify-between min-w-0 cursor-pointer overflow-hidden rounded-full h-16 px-8 text-lg font-bold transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${clasesColores[estilo]}`}
+      aria-label={texto}
+    >
       <div className="flex items-center gap-4">
-        <span className="material-symbols-outlined text-2xl">{icono}</span>
+        <span className="material-symbols-outlined text-2xl" aria-hidden="true">{icono}</span>
         <span className="truncate">{texto}</span>
       </div>
-      <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0">
+      <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0" aria-hidden="true">
         arrow_forward
       </span>
     </button>
   );
-}
+});

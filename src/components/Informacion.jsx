@@ -6,8 +6,12 @@ export function Informacion({ alVolver }) {
       
       {/* Cabecera */}
       <div className="sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md py-4 mb-6 flex items-center gap-4 border-b border-primary/10">
-        <button onClick={alVolver} className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition">
-          <span className="material-symbols-outlined">arrow_back</span>
+        <button 
+          onClick={alVolver} 
+          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          aria-label="Volver a la página principal"
+        >
+          <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
         </button>
         <h2 className="text-xl font-bold bubbly-text">Sobre Nosotros ✨</h2>
       </div>
