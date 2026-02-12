@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Informacion({ alVolver }) {
+export const Informacion = React.memo(function Informacion({ alVolver }) {
   return (
     <div className="w-full max-w-[600px] mx-auto pb-10 px-4">
       
@@ -60,4 +60,4 @@ export function Informacion({ alVolver }) {
       </div>
     </div>
   );
-}
+});
