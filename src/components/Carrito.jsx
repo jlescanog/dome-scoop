@@ -1,22 +1,32 @@
-import React from 'react';
-// 1. IMPORTAMOS EL LOGO (Para usarlo si falla la imagen del producto)
+import React, { useMemo } from 'react';
 import logoPlaceholder from '../assets/logo_principal.svg';
+import { TELEFONO_WHATSAPP, MENSAJES } from '../utils/constants';
+import ReactGA from 'react-ga4';
 
-export function Carrito({ carrito, alVolver, alEliminar }) {
-  const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
+export const Carrito = React.memo(function Carrito({ carrito, alVolver, alEliminar }) {
+  const total = useMemo(() => 
+    carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0),
+    [carrito]
+  );
 
   const enviarPedido = () => {
-    const numeroTelefono = "51987529649";
-    
-    let mensaje = `Hola Dome Scoop! ✨ Me gustaría pedir:%0A%0A`;
+    // Tracking de Google Analytics
+    ReactGA.event({
+      action: 'initiate_checkout',
+      category: 'Ecommerce',
+      label: 'WhatsApp',
+      value: total
+    });
+
+    let mensaje = MENSAJES.WHATSAPP_PEDIDO_INICIO;
     carrito.forEach(item => {
       mensaje += `▪️ ${item.cantidad}x ${item.nombre} (S/. ${item.precio * item.cantidad})%0A`;
     });
     mensaje += `%0A💰 *TOTAL: S/. ${total.toFixed(2)}*`;
-    mensaje += `%0A📍 Mis datos de envío:`;
+    mensaje += MENSAJES.WHATSAPP_PEDIDO_DATOS;
 
-    const url = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
-    window.open(url, "_blank");
+    const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${mensaje}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -24,10 +34,19 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
       
       {/* Cabecera */}
       <div className="sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md p-4 flex items-center gap-4 border-b border-primary/10">
-        <button onClick={alVolver} className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition">
-          <span className="material-symbols-outlined">arrow_back</span>
+        <button 
+          onClick={alVolver} 
+          className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          aria-label="Volver al catálogo"
+        >
+          <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
         </button>
         <h2 className="text-xl font-bold bubbly-text">Tu Canasta 🛍️</h2>
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {carrito.length === 0 
+            ? 'Carrito vacío' 
+            : `${carrito.length} producto${carrito.length > 1 ? 's' : ''} en el carrito`}
+        </div>
       </div>
 
       {/* Lista de Productos */}
@@ -41,15 +60,18 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
           carrito.map((item) => (
             <div key={item.id} className="glass-card p-4 rounded-xl flex items-center gap-4 animate-fade-in">
               
-              {/* 2. IMAGEN CON PROTECCIÓN (Si falla, muestra el logo) */}
+              {/* Imagen con protección (Si falla, muestra el logo) */}
               <img 
                 src={item.imagen} 
                 alt={item.nombre} 
                 className="w-16 h-16 rounded-lg object-cover bg-white"
+                loading="lazy"
+                width="64"
+                height="64"
                 onError={(e) => {
                   e.target.onerror = null; 
-                  e.target.src = logoPlaceholder; // <--- AQUÍ ESTÁ EL ARREGLO
-                  e.target.className = "w-16 h-16 rounded-lg object-contain p-1 bg-white"; // Ajuste visual para que el logo se vea bien
+                  e.target.src = logoPlaceholder;
+                  e.target.className = "w-16 h-16 rounded-lg object-contain p-1 bg-white";
                 }}
               />
               
@@ -60,9 +82,10 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
               </div>
               <button 
                 onClick={() => alEliminar(item.id)}
-                className="text-red-400 hover:text-red-600 p-2"
+                className="text-red-400 hover:text-red-600 p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2"
+                aria-label={`Eliminar ${item.nombre} del carrito`}
               >
-                <span className="material-symbols-outlined">delete</span>
+                <span className="material-symbols-outlined" aria-hidden="true">delete</span>
               </button>
             </div>
           ))
@@ -80,9 +103,10 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
             
             <button 
               onClick={enviarPedido}
-              className="w-full py-4 bg-[#25D366] text-white rounded-xl font-bold text-lg shadow-lg hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2"
+              className="w-full py-4 bg-[#25D366] text-white rounded-xl font-bold text-lg shadow-lg hover:brightness-105 active:scale-95 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              aria-label="Enviar pedido por WhatsApp"
             >
-              <span className="material-symbols-outlined">chat</span>
+              <span className="material-symbols-outlined" aria-hidden="true">chat</span>
               Pedir por WhatsApp
             </button>
           </div>
@@ -90,4 +114,4 @@ export function Carrito({ carrito, alVolver, alEliminar }) {
       )}
     </div>
   );
-}
+});
