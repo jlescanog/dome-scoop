@@ -8,7 +8,7 @@ export const TELEFONO_DESARROLLADOR = "51933243356";
 export const URLS = {
   FACEBOOK: "https://facebook.com/domescoop",
   INSTAGRAM: "https://instagram.com/dome_scoop",
-  TIKTOK: "https://tiktok.com/@Chifa_Gamer",
+  TIKTOK: "https://www.tiktok.com/@dome_scoop",
   WHATSAPP_DESARROLLADOR: `https://wa.me/${TELEFONO_DESARROLLADOR}?text=Hola%20Jhair,%20vi%20la%20web%20de%20DomeScoop%20y%20me%20gustaría%20cotizar%20una%20igual`
 };
 
