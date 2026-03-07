@@ -1,17 +1,20 @@
 import React, { useCallback } from 'react';
 import logoDome from '../assets/logo_principal.svg';
 import { TELEFONO_WHATSAPP, MENSAJES, URLS } from '../utils/constants';
+import { trackEvent } from '../main'; // Importar el helper de analytics
 
 export const LinkBio = React.memo(function LinkBio({ alHacerClickEnTienda, alHacerClickEnInfo }) {
   
-  // Función para abrir enlaces externos (WhatsApp, Redes)
-  const abrirEnlace = useCallback((url) => {
+  // Función unificada para seguir y abrir enlaces externos
+  const trackAndOpenLink = useCallback((label, url) => {
+    trackEvent('click', 'Outbound Link', label);
     window.open(url, '_blank', 'noopener,noreferrer');
   }, []);
 
   const abrirWhatsAppDirecto = useCallback(() => {
-    abrirEnlace(`https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(MENSAJES.WHATSAPP_INICIAL)}`);
-  }, [abrirEnlace]);
+    const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(MENSAJES.WHATSAPP_INICIAL)}`;
+    trackAndOpenLink('WhatsApp Direct', url);
+  }, [trackAndOpenLink]);
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center py-10 px-4">
@@ -85,7 +88,7 @@ export const LinkBio = React.memo(function LinkBio({ alHacerClickEnTienda, alHac
             icono="thumb_up" 
             texto="Facebook" 
             estilo="gradient3" 
-            onClick={() => abrirEnlace(URLS.FACEBOOK)}
+            onClick={() => trackAndOpenLink('Facebook', URLS.FACEBOOK)}
           />
 
           {/* 4. INSTAGRAM */}
@@ -93,7 +96,7 @@ export const LinkBio = React.memo(function LinkBio({ alHacerClickEnTienda, alHac
             icono="photo_camera" 
             texto="Instagram" 
             estilo="gradient4" 
-            onClick={() => abrirEnlace(URLS.INSTAGRAM)}
+            onClick={() => trackAndOpenLink('Instagram', URLS.INSTAGRAM)}
           />
 
           {/* 5. TIKTOK */}
@@ -101,7 +104,7 @@ export const LinkBio = React.memo(function LinkBio({ alHacerClickEnTienda, alHac
             icono="music_note" 
             texto="TikTok" 
             estilo="gradient5" 
-            onClick={() => abrirEnlace(URLS.TIKTOK)}
+            onClick={() => trackAndOpenLink('TikTok', URLS.TIKTOK)}
           />
 
           {/* 6. QUIÉNES SOMOS (Nueva página interna) */}
@@ -131,6 +134,7 @@ export const LinkBio = React.memo(function LinkBio({ alHacerClickEnTienda, alHac
             href={URLS.WHATSAPP_DESARROLLADOR} 
             target="_blank" 
             rel="noopener noreferrer"
+            onClick={() => trackEvent('click', 'Outbound Link', 'Developer Signature')}
             className="text-xs text-gray-400 hover:text-primary transition-colors duration-300 flex items-center gap-1 opacity-70 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
             aria-label="Contactar al desarrollador Jhair Lescano por WhatsApp"
           >
